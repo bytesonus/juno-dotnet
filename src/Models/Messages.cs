@@ -18,7 +18,7 @@ namespace JunoSDK.Models
 		public static BaseMessage Error = new ErrorMessage();
 		public static BaseMessage Unknown = new UnknownMessage();
 
-		public string RequestId { get; set; }
+		public string RequestId { get; set; } = string.Empty;
 		private readonly ulong messageType;
 
 		protected BaseMessage(ulong messageType)
@@ -34,8 +34,8 @@ namespace JunoSDK.Models
 
 	public class RegisterModuleRequestMessage : BaseMessage
 	{
-		public string ModuleId { get; set; }
-		public string Version { get; set; }
+		public string ModuleId { get; set; } = string.Empty;
+		public string Version { get; set; } = string.Empty;
 		public Dictionary<string, string> Dependencies { get; set; } = new Dictionary<string, string>();
 
 		public RegisterModuleRequestMessage() : base(Constants.RequestTypes.RegisterModuleRequest) { }
@@ -48,7 +48,7 @@ namespace JunoSDK.Models
 
 	public class FunctionCallRequestMessage : BaseMessage
 	{
-		public string Function { get; set; }
+		public string Function { get; set; } = string.Empty;
 		public Dictionary<string, MessageItem> Arguments { get; set; } = new Dictionary<string, MessageItem>();
 
 		public FunctionCallRequestMessage() : base(Constants.RequestTypes.FunctionCallRequest) { }
@@ -56,14 +56,14 @@ namespace JunoSDK.Models
 
 	public class FunctionCallResponseMessage : BaseMessage
 	{
-		public MessageItem Data { get; set; }
+		public MessageItem Data { get; set; } = MessageItem.FromObject(null);
 
 		public FunctionCallResponseMessage() : base(Constants.RequestTypes.FunctionCallResponse) { }
 	}
 
 	public class RegisterHookRequestMessage : BaseMessage
 	{
-		public string Hook { get; set; }
+		public string Hook { get; set; } = string.Empty;
 
 		public RegisterHookRequestMessage() : base(Constants.RequestTypes.RegisterHookRequest) { }
 	}
@@ -76,7 +76,7 @@ namespace JunoSDK.Models
 	public class TriggerHookRequestMessage : BaseMessage
 	{
 		public string Hook { get; set; } = string.Empty;
-		public MessageItem Data { get; set; }
+		public MessageItem Data { get; set; } = MessageItem.FromObject(null);
 
 		public TriggerHookRequestMessage() : base(Constants.RequestTypes.TriggerHookRequest) { }
 	}
@@ -88,14 +88,14 @@ namespace JunoSDK.Models
 
 	public class DeclareFunctionRequestMessage : BaseMessage
 	{
-		public string Function { get; set; }
+		public string Function { get; set; } = string.Empty;
 
 		public DeclareFunctionRequestMessage() : base(Constants.RequestTypes.DeclareFunctionRequest) { }
 	}
 
 	public class DeclareFunctionResponseMessage : BaseMessage
 	{
-		public string Function { get; set; }
+		public string Function { get; set; } = string.Empty;
 
 		public DeclareFunctionResponseMessage() : base(Constants.RequestTypes.DeclareFunctionResponse) { }
 	}
