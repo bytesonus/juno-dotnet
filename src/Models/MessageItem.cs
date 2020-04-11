@@ -41,6 +41,8 @@ namespace JunoSDK.Models
 		public IEnumerable? AsArray() => value as IEnumerable;
 		public IDictionary<string, MessageItem>? AsObject() => value as IDictionary<string, MessageItem>;
 
+		internal object GetValue() => value;
+
 		public static MessageItem FromObject(object? value) => new MessageItem(value);
 	}
 }

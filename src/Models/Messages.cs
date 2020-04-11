@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using JunoSDK.utils;
+using JunoSDK.Utils;
 
 namespace JunoSDK.Models
 {
@@ -102,6 +102,8 @@ namespace JunoSDK.Models
 
 	public class ErrorMessage : BaseMessage
 	{
+		public uint ErrorCode { get; set; } = 0;
+		
 		public ErrorMessage() : base(Constants.RequestTypes.Error) { }
 	}
 

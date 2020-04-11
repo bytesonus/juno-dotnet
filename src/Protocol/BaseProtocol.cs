@@ -11,45 +11,45 @@ namespace JunoSDK.Protocol
 		public BaseMessage Initialize(string moduleId, string version, Dictionary<string, string> dependencies)
 		{
 			this.moduleId = moduleId;
-			return new RegisterModuleRequestMessage()
+			return new RegisterModuleRequestMessage
 			{
 				RequestId = GenerateRequestId(),
 				ModuleId = moduleId,
 				Version = version,
-				Dependencies = dependencies,
+				Dependencies = dependencies
 			};
 		}
 
 		public BaseMessage RegisterHook(string hook)
 		{
-			return new RegisterHookRequestMessage()
+			return new RegisterHookRequestMessage
 			{
 				RequestId = GenerateRequestId(),
-				Hook = hook,
+				Hook = hook
 			};
 		}
 
 		public BaseMessage TriggerHook(string hook)
 		{
-			return new TriggerHookRequestMessage()
+			return new TriggerHookRequestMessage
 			{
 				RequestId = GenerateRequestId(),
-				Hook = hook,
+				Hook = hook
 			};
 		}
 
 		public BaseMessage DeclareFunction(string function)
 		{
-			return new DeclareFunctionRequestMessage()
+			return new DeclareFunctionRequestMessage
 			{
 				RequestId = GenerateRequestId(),
-				Function = function,
+				Function = function
 			};
 		}
 
 		public BaseMessage CallFunction(string function, Dictionary<string, MessageItem> arguments)
 		{
-			return new FunctionCallRequestMessage()
+			return new FunctionCallRequestMessage
 			{
 				RequestId = GenerateRequestId(),
 				Function = function,
